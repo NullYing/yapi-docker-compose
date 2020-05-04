@@ -2,22 +2,24 @@
 
 ## 简介
 
-使用docker-compose一键部署yapi
+使用 docker-compose 一键部署 YApi
 
 - 优点
-  - 基于node alpine版本，且使用了多阶段构建，体积小
-  - 使用了[wait](https://github.com/ufoscout/docker-compose-wait)，能确保启动顺序正确
-  - 使用volumes加载配置，修改配置更灵活
+  - 体积小：基于 node alpine 版本，且使用了多阶段构建
+  - 安全：本地编译 YApi 镜像
+  - 使用简单：下载后一键启动即可
+  - 能确保启动顺序正确：使用了[docker-compose-wait](https://github.com/ufoscout/docker-compose-wait)
+  - 修改配置更灵活：使用 volumes 挂载 YApi config.json
+  - 数据备份恢复简单：使用 volumes 挂载 MongoDB 数据卷
 
 ## 使用
 
-- `git clone git@github.com:huajiejin/yapi-docker-compose.git`
+- **1. 下载** `git clone git@github.com:huajiejin/yapi-docker-compose.git && cd yapi-docker-compose`
 - [可选的] 编辑配置 `vi config.json`
-- [可选的] 下载指定的yapi版本
-  - `wget -c -O yapi.tgz http://registry.npm.taobao.org/yapi-vendor/download/yapi-vendor-1.9.1.tgz`
-- `docker-compose up -d`
+- [可选的] 使用指定的 YApi 版本，下载并替换 yapi.tgz 文件后构建即可 `wget -c -O yapi.tgz http://registry.npm.taobao.org/yapi-vendor/download/yapi-vendor-1.9.1.tgz`
+- **2. 启动** `docker-compose up -d`
 - 访问 http://localhost:3000
-- [可选的] 配置Nginx反向代理，参考[nginx.conf](./nginx.conf)
+- [可选的] 配置 Nginx 反向代理，参考[nginx.conf](./nginx.conf)
 
 ## 感谢
 
