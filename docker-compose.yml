@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  yapi:
+    build:
+      context: ./
+      dockerfile: ./Dockerfile
+    image: yapi
+    container_name: yapi_web
+    restart: always
+    ports:
+      - 127.0.0.1:3000:3000
+    volumes:
+      - ${PWD}/config.json:/app/config.json
+    environment:
+      WAIT_HOSTS: mongo:27017
+  
+  mongo:
+    image: mongo:3.6.18
+    container_name: yapi_mongo
+    restart: always
+    volumes:
+      - ${PWD}/db:/data/db
