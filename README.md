@@ -16,6 +16,8 @@
 - [可选的] 下载指定的yapi版本
   - `wget -c -O yapi.tgz http://registry.npm.taobao.org/yapi-vendor/download/yapi-vendor-1.9.1.tgz`
 - `docker-compose up -d`
+- 访问 http://localhost:3000
+- [可选的] 配置Nginx反向代理，参考[nginx.conf](./nginx.conf)
 
 ## 感谢
 
